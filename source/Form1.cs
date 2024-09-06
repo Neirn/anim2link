@@ -46,15 +46,14 @@ namespace anim2link
             {
 
                 string[] _s = _l[i].Split(' ');
-                if (_s.Length < 4)
+
+                if (_s[0] == "frames" || _s[0] == "newanim")
                 {
-                    if (_s[0] == "frames")
-                    {
-                        // Create New Animation Instance
-                        Processing.Animation NewAnim = new Processing.Animation(_src, _s[2]);
-                        Animations.Add(NewAnim);
-                    }
+                    // Create New Animation Instance
+                    Processing.Animation NewAnim = new Processing.Animation(_src, _s[2]);
+                    Animations.Add(NewAnim);
                 }
+                
             }
 
             // Populate ListView
@@ -270,6 +269,11 @@ namespace anim2link
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             ListAnimations(textBox1.Text, listView1);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
