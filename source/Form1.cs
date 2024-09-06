@@ -61,12 +61,16 @@ namespace anim2link
 
             foreach (string fileName in _srcBins.Split(','))
             {
-                FileInfo fileInfo = new FileInfo(fileName);
-                if (fileInfo.Exists && fileInfo.Length % Processing.Animation.RAW_FRAME_SIZE == 0)
+                if (File.Exists(fileName))
                 {
-                    Processing.Animation NewAnim = new Processing.Animation(fileName, fileInfo.Name, true);
-                    Animations.Add(NewAnim);
+                    FileInfo fileInfo = new FileInfo(fileName);
+                    if (fileInfo.Length % Processing.Animation.RAW_FRAME_SIZE == 0)
+                    {
+                        Processing.Animation NewAnim = new Processing.Animation(fileName, fileInfo.Name, true);
+                        Animations.Add(NewAnim);
+                    }
                 }
+
             }
 
             // Populate ListView
