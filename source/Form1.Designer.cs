@@ -57,6 +57,7 @@
             this.textBoxRomPath = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.checkBoxExtractLinkAnime = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -159,6 +160,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBoxExtractLinkAnime);
             this.groupBox2.Controls.Add(this.btnExportAll);
             this.groupBox2.Controls.Add(this.listBox1);
             this.groupBox2.Controls.Add(this.button2);
@@ -325,6 +327,16 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // checkBoxExtractLinkAnime
+            // 
+            this.checkBoxExtractLinkAnime.AutoSize = true;
+            this.checkBoxExtractLinkAnime.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxExtractLinkAnime.Name = "checkBoxExtractLinkAnime";
+            this.checkBoxExtractLinkAnime.Size = new System.Drawing.Size(155, 17);
+            this.checkBoxExtractLinkAnime.TabIndex = 6;
+            this.checkBoxExtractLinkAnime.Text = "Export link_animetion.zdata";
+            this.checkBoxExtractLinkAnime.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,6 +390,7 @@
         private System.Windows.Forms.Button buttonSelectBinFiles;
         private System.Windows.Forms.Label labelBinFiles;
         private System.Windows.Forms.TextBox textBoxBinFiles;
+        private System.Windows.Forms.CheckBox checkBoxExtractLinkAnime;
     }
 }
 
