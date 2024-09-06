@@ -109,8 +109,8 @@ namespace anim2link
             if (checkBox1.Checked)
             {
                 // Initialize Variables
-                byte[] _rom = File.ReadAllBytes(textBox2.Text);
-                BinaryWriter rombw = new BinaryWriter(new FileStream(textBox2.Text, FileMode.Open));
+                byte[] _rom = File.ReadAllBytes(textBoxRomPath.Text);
+                BinaryWriter rombw = new BinaryWriter(new FileStream(textBoxRomPath.Text, FileMode.Open));
                 int link_animetion = Convert.ToInt32(textBox4.Text, 16);
                 byte[] _anime = Proc.GetByteArray(_rom, link_animetion, Anime_Size);
 
@@ -154,7 +154,7 @@ namespace anim2link
                     }
 
                     _anime = Proc.GetByteArray(_rom, link_animetion, Anime_Size);
-                    File.WriteAllBytes(Directory.GetParent(textBox2.Text) + "/link_animetion.zdata", _anime);
+                    File.WriteAllBytes(Directory.GetParent(textBoxRomPath.Text) + "/link_animetion.zdata", _anime);
 
                     rombw.Close();
                     rombw.Dispose();
@@ -203,7 +203,7 @@ namespace anim2link
             {
                 if (OpenFile.ShowDialog() == DialogResult.OK)
                 {
-                    textBox2.Text = OpenFile.FileName;
+                    textBoxRomPath.Text = OpenFile.FileName;
                 }
             }
         }

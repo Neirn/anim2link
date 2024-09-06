@@ -54,7 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxRomPath = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -235,7 +235,7 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.textBox3);
             this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.textBoxRomPath);
             this.groupBox3.Enabled = false;
             this.groupBox3.Location = new System.Drawing.Point(6, 42);
             this.groupBox3.Name = "groupBox3";
@@ -305,12 +305,12 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox2
+            // textBoxRomPath
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(140, 20);
-            this.textBox2.TabIndex = 4;
+            this.textBoxRomPath.Location = new System.Drawing.Point(6, 19);
+            this.textBoxRomPath.Name = "textBoxRomPath";
+            this.textBoxRomPath.Size = new System.Drawing.Size(140, 20);
+            this.textBoxRomPath.TabIndex = 4;
             // 
             // timer1
             // 
@@ -362,7 +362,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxRomPath;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
