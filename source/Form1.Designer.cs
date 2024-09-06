@@ -161,7 +161,6 @@
             // 
             this.groupBox2.Controls.Add(this.btnExportAll);
             this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.checkBoxFloorPlaneComp);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.groupBox3);
@@ -198,7 +197,7 @@
             // checkBoxFloorPlaneComp
             // 
             this.checkBoxFloorPlaneComp.AutoSize = true;
-            this.checkBoxFloorPlaneComp.Location = new System.Drawing.Point(6, 233);
+            this.checkBoxFloorPlaneComp.Location = new System.Drawing.Point(136, 272);
             this.checkBoxFloorPlaneComp.Name = "checkBoxFloorPlaneComp";
             this.checkBoxFloorPlaneComp.Size = new System.Drawing.Size(149, 17);
             this.checkBoxFloorPlaneComp.TabIndex = 3;
@@ -333,6 +332,7 @@
             this.ClientSize = new System.Drawing.Size(502, 302);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.checkBoxFloorPlaneComp);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -345,6 +345,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
