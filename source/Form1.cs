@@ -19,35 +19,54 @@ namespace anim2link
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog OpenFile = new OpenFileDialog())
+            OpenFileDialog openFile = new OpenFileDialog
             {
-                if (OpenFile.ShowDialog() == DialogResult.OK)
+                Filter = "Objex Animation Data (*.anim)|*.anim|All files (*.*)|*.*"
+            };
+            {
+                if (openFile.ShowDialog() == DialogResult.OK)
                 {
-                    textBox1.Text = OpenFile.FileName;
-                    ListAnimations(textBox1.Text, listView1);
+                    textBox1.Text = openFile.FileName;
+                    ListAnimations(listView1);
                     btnRefresh.Enabled = true;
                 }
             }
         }
 
-        private void ListAnimations(string _src, ListView _lb)
+        private void ListAnimations(ListView _lb)
         {
+            string _src = textBox1.Text;
+            string _srcBins = textBoxBinFiles.Text;
             Animations.Clear();
-            string[] _l = File.ReadAllLines(_src);
 
-            // Parse All Animations
-            for (int i = 0; i < _l.Length; i++)
+            if (File.Exists(_src))
             {
+                string[] _l = File.ReadAllLines(_src);
 
-                string[] _s = _l[i].Split(' ');
-
-                if (_s[0] == "frames" || _s[0] == "newanim")
+                // Parse All Animations
+                for (int i = 0; i < _l.Length; i++)
                 {
-                    // Create New Animation Instance
-                    Processing.Animation NewAnim = new Processing.Animation(_src, _s[2]);
+
+                    string[] _s = _l[i].Split(' ');
+
+                    if (_s[0] == "frames" || _s[0] == "newanim")
+                    {
+                        // Create New Animation Instance
+                        Processing.Animation NewAnim = new Processing.Animation(_src, _s[2]);
+                        Animations.Add(NewAnim);
+                    }
+
+                }
+            }
+
+            foreach (string fileName in _srcBins.Split(','))
+            {
+                FileInfo fileInfo = new FileInfo(fileName);
+                if (fileInfo.Exists && fileInfo.Length % Processing.Animation.RAW_FRAME_SIZE == 0)
+                {
+                    Processing.Animation NewAnim = new Processing.Animation(fileName, fileInfo.Name, true);
                     Animations.Add(NewAnim);
                 }
-                
             }
 
             // Populate ListView
@@ -78,7 +97,9 @@ namespace anim2link
                 return;
             }
 
-            byte[] AnimationRaw = Proc.GetRaw(Animations[listView1.SelectedIndices[0]]);
+
+            Processing.Animation anim = Animations[listView1.SelectedIndices[0]];
+            byte[] AnimationRaw = Proc.GetRaw(anim);
             string fileOutPath = String.Format("{0}.bin", listView1.SelectedItems[0].Text);
             #region Write To ROM
             if (checkBox1.Checked)
@@ -135,7 +156,7 @@ namespace anim2link
                     rombw.Dispose();
                 }
             }
-            else
+            else if (!anim.IsRawAnimation)
             {
                 BinaryWriter bw = new BinaryWriter(new FileStream(fileOutPath, FileMode.Create));
                 for (int i = 0; i < AnimationRaw.Length; i++)
@@ -148,10 +169,21 @@ namespace anim2link
                 }
                 else
                 {
-                    Console.WriteLine("Done! " +  fileOutPath + " Exported");
+                    Console.WriteLine("Done! " + fileOutPath + " Exported");
                 }
                 bw.Close();
                 bw.Dispose();
+            }
+            else
+            {
+                if (!Do_Not_Alert)
+                {
+                    MessageBox.Show("Cannot export a file that's already a .bin!", listView1.SelectedItems[0].Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    Console.WriteLine(listView1.SelectedItems[0].Text + " is already a .bin!");
+                }
             }
             #endregion
         }
@@ -262,12 +294,21 @@ namespace anim2link
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            ListAnimations(textBox1.Text, listView1);
+            ListAnimations(listView1);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                Filter = "Raw animation data (*.bin)|*.bin|All files (*.*)|*.*"
+            };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxBinFiles.Text = string.Join(",", dialog.FileNames);
+                ListAnimations(listView1);
+            }
         }
     }
 }

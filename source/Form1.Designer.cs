@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxBinFiles = new System.Windows.Forms.TextBox();
+            this.buttonSelectBinFiles = new System.Windows.Forms.Button();
+            this.labelBinFiles = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,6 +41,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnExportAll = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -51,8 +56,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.btnExportAll = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -61,6 +64,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxBinFiles);
+            this.groupBox1.Controls.Add(this.buttonSelectBinFiles);
+            this.groupBox1.Controls.Add(this.labelBinFiles);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.listView1);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -71,6 +77,32 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Source";
+            // 
+            // textBoxBinFiles
+            // 
+            this.textBoxBinFiles.Location = new System.Drawing.Point(102, 39);
+            this.textBoxBinFiles.Name = "textBoxBinFiles";
+            this.textBoxBinFiles.Size = new System.Drawing.Size(122, 20);
+            this.textBoxBinFiles.TabIndex = 7;
+            // 
+            // buttonSelectBinFiles
+            // 
+            this.buttonSelectBinFiles.Location = new System.Drawing.Point(230, 37);
+            this.buttonSelectBinFiles.Name = "buttonSelectBinFiles";
+            this.buttonSelectBinFiles.Size = new System.Drawing.Size(35, 23);
+            this.buttonSelectBinFiles.TabIndex = 6;
+            this.buttonSelectBinFiles.Text = "...";
+            this.buttonSelectBinFiles.UseVisualStyleBackColor = true;
+            this.buttonSelectBinFiles.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // labelBinFiles
+            // 
+            this.labelBinFiles.AutoSize = true;
+            this.labelBinFiles.Location = new System.Drawing.Point(6, 42);
+            this.labelBinFiles.Name = "labelBinFiles";
+            this.labelBinFiles.Size = new System.Drawing.Size(95, 13);
+            this.labelBinFiles.TabIndex = 4;
+            this.labelBinFiles.Text = "Binary (.bin) File(s):";
             // 
             // button1
             // 
@@ -90,10 +122,10 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(9, 40);
+            this.listView1.Location = new System.Drawing.Point(9, 66);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(256, 200);
+            this.listView1.Size = new System.Drawing.Size(256, 174);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -107,7 +139,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Frame Count";
-            this.columnHeader2.Width = 128;
+            this.columnHeader2.Width = 123;
             // 
             // textBox1
             // 
@@ -139,6 +171,29 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Export";
+            // 
+            // btnExportAll
+            // 
+            this.btnExportAll.Location = new System.Drawing.Point(43, 256);
+            this.btnExportAll.Name = "btnExportAll";
+            this.btnExportAll.Size = new System.Drawing.Size(75, 23);
+            this.btnExportAll.TabIndex = 5;
+            this.btnExportAll.Text = "Export All";
+            this.btnExportAll.UseVisualStyleBackColor = true;
+            this.btnExportAll.Click += new System.EventHandler(this.btnExportAll_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "1.0 (Oot)",
+            "Debug (Oot)",
+            "1.0 (MM)"});
+            this.listBox1.Location = new System.Drawing.Point(15, 178);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 43);
+            this.listBox1.TabIndex = 4;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // checkBox2
             // 
@@ -261,36 +316,13 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "1.0 (Oot)",
-            "Debug (Oot)",
-            "1.0 (MM)"});
-            this.listBox1.Location = new System.Drawing.Point(15, 178);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 43);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // btnExportAll
-            // 
-            this.btnExportAll.Location = new System.Drawing.Point(43, 256);
-            this.btnExportAll.Name = "btnExportAll";
-            this.btnExportAll.Size = new System.Drawing.Size(75, 23);
-            this.btnExportAll.TabIndex = 5;
-            this.btnExportAll.Text = "Export All";
-            this.btnExportAll.UseVisualStyleBackColor = true;
-            this.btnExportAll.Click += new System.EventHandler(this.btnExportAll_Click);
-            // 
             // btnRefresh
             // 
             this.btnRefresh.Location = new System.Drawing.Point(12, 268);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(96, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(123, 23);
             this.btnRefresh.TabIndex = 2;
-            this.btnRefresh.Text = "Refresh .anim";
+            this.btnRefresh.Text = "Refresh Animation List";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -342,6 +374,9 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnExportAll;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button buttonSelectBinFiles;
+        private System.Windows.Forms.Label labelBinFiles;
+        private System.Windows.Forms.TextBox textBoxBinFiles;
     }
 }
 

@@ -10,49 +10,64 @@ namespace anim2link
 {
     public class Processing
     {
+        
         public Form1 host = new Form1();
         public struct Animation
         {
+            public static int RAW_FRAME_SIZE { get; } = 0x86;
             public string SourceFile { get; set; }
             public int SourceLine { get; set; }
             public string Name { get; set; }
             public int FrameCount { get; set; }
+            public bool IsRawAnimation { get; set; }
 
-            public Animation(string _src, string name) : this()
+            public Animation(string _src, string name, bool isRaw = false) : this()
             {
                 Name = name;
                 // Read Source File into Buffer
                 SourceFile = _src;
-                string[] _l = File.ReadAllLines(SourceFile);
 
-                // Detrmine Line Position and Frame Count of Animation `name`
-                for (int i = 0; i < _l.Length; i++)
-                {
-                    string[] _s = _l[i].Split(' ');
-                    if (_s.Length < 4)
+                IsRawAnimation = isRaw;
+
+                if (!isRaw) {
+                    string[] _l = File.ReadAllLines(SourceFile);
+
+                    // Detrmine Line Position and Frame Count of Animation `name`
+                    for (int i = 0; i < _l.Length; i++)
                     {
-                        if (_s[0] == "frames")
+                        string[] _s = _l[i].Split(' ');
+                        if (_s.Length < 4)
+                        {
+                            if (_s[0] == "frames")
+                            {
+                                if (_s[2] == Name)
+                                {
+                                    SourceLine = i;
+                                    FrameCount = int.Parse(_s[1]);
+                                    break;
+                                }
+                            }
+                        }
+                        else if (_s[0] == "newanim")
                         {
                             if (_s[2] == Name)
                             {
                                 SourceLine = i;
-                                FrameCount = int.Parse(_s[1]);
+                                FrameCount = int.Parse(_s[3]);
                                 break;
                             }
                         }
                     }
-                    else if (_s[0] == "newanim")
-                    {
-                        if (_s[2] == Name)
-                        {
-                            SourceLine = i;
-                            FrameCount = int.Parse(_s[3]);
-                            break;
-                        }
-                    }
                 }
+                else
+                {
+                    byte[] _b = File.ReadAllBytes(SourceFile);
+                    FrameCount = _b.Length / Animation.RAW_FRAME_SIZE;
+                }
+                
             }
         }
+
         public double RadianToEuler(double _rad)
         {
             double _eul = (180 / Math.PI) * _rad;
@@ -150,12 +165,17 @@ namespace anim2link
 
         public byte[] GetRaw(Animation _anim)
         {
+            if (_anim.IsRawAnimation)
+            {
+                return File.ReadAllBytes(_anim.SourceFile);
+            }
+
             string[] _line = File.ReadAllLines(_anim.SourceFile);
             int _linepos = _anim.SourceLine;
             int _fc = _anim.FrameCount;
             List<byte[]> Frames = new List<byte[]>();
             // Initialize New Byte Array (Link's Frame Length * Frame Count)
-            byte[] _out = new byte[0x86 * _fc];
+            byte[] _out = new byte[Animation.RAW_FRAME_SIZE * _fc];
 
             #region Parse
             // Start Parsing; Initiailize Line Buffer
@@ -165,7 +185,7 @@ namespace anim2link
             for (int i = 0; i < _fc; i++)
             {
                 // Initiailize New Frame Array and Write Buffer Position
-                byte[] _frame = new byte[0x86];
+                byte[] _frame = new byte[Animation.RAW_FRAME_SIZE];
                 int _writepos = 0;
 
                 // Parse 1 Translation and 21 Rotations
@@ -197,7 +217,7 @@ namespace anim2link
                 Frames.Add(_frame);
 
                 // Reset and Advance Parse Buffer
-                _frame = new byte[0x86];
+                _frame = new byte[Animation.RAW_FRAME_SIZE];
                 _buf += 22;
             }
             #endregion
