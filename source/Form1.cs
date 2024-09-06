@@ -17,7 +17,7 @@ namespace anim2link
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void openSelectAnimDialogue_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog
             {
@@ -26,17 +26,17 @@ namespace anim2link
             {
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
-                    textBox1.Text = openFile.FileName;
+                    textBoxAnimPath.Text = openFile.FileName;
                     ListAnimations(listView1);
-                    btnRefresh.Enabled = true;
+                    buttonRefreshAnimList.Enabled = true;
                 }
             }
         }
 
         private void ListAnimations(ListView _lb)
         {
-            string _src = textBox1.Text;
-            string _srcBins = textBoxBinFiles.Text;
+            string _src = textBoxAnimPath.Text;
+            string _srcBins = textBoxBinPath.Text;
             Animations.Clear();
 
             if (File.Exists(_src))
@@ -64,7 +64,7 @@ namespace anim2link
                 if (File.Exists(fileName))
                 {
                     FileInfo fileInfo = new FileInfo(fileName);
-                    if (fileInfo.Length % Processing.Animation.RAW_FRAME_SIZE == 0)
+                    if (fileInfo.Length % Processing.Animation.RAW_FRAME_SIZE == 0 && fileInfo.Length < Int32.MaxValue)
                     {
                         Processing.Animation NewAnim = new Processing.Animation(fileName, fileInfo.Name, true);
                         Animations.Add(NewAnim);
@@ -88,9 +88,10 @@ namespace anim2link
             }
 
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxInjectToRom_CheckedChanged(object sender, EventArgs e)
         {
             groupBox3.Enabled = !groupBox3.Enabled;
+            checkBoxExtractLinkAnime.Enabled = !checkBoxExtractLinkAnime.Enabled;
         }
 
         private void processStuff()
@@ -104,21 +105,21 @@ namespace anim2link
 
             Processing.Animation anim = Animations[listView1.SelectedIndices[0]];
             byte[] AnimationRaw = Proc.GetRaw(anim);
-            string fileOutPath = String.Format("{0}.bin", listView1.SelectedItems[0].Text);
+            string fileOutPath = String.Format(anim.IsRawAnimation ? "{0}" : "{0}.bin", listView1.SelectedItems[0].Text);
             #region Write To ROM
             if (checkBoxInjectToRom.Checked)
             {
                 // Initialize Variables
                 byte[] _rom = File.ReadAllBytes(textBoxRomPath.Text);
                 BinaryWriter rombw = new BinaryWriter(new FileStream(textBoxRomPath.Text, FileMode.Open));
-                int link_animetion = Convert.ToInt32(textBox4.Text, 16);
+                int link_animetion = Convert.ToInt32(textBoxLinkAnimetionRomOffset.Text, 16);
                 byte[] _anime = Proc.GetByteArray(_rom, link_animetion, Anime_Size);
 
                 rombw.Seek(link_animetion, 0);
                 rombw.Write(_anime);
 
-                int gameplay_keep = Convert.ToInt32(textBox5.Text, 16);
-                int header = gameplay_keep + Convert.ToInt32(textBox3.Text, 16);
+                int gameplay_keep = Convert.ToInt32(textBoxGamePlayKeepRomOffset.Text, 16);
+                int header = gameplay_keep + Convert.ToInt32(textBoxAnimTableEntryGameplayKeepOffset.Text, 16);
                 byte[] _header = Proc.GetByteArray(_rom, header, 8);
                 short _fc_old = (short)((_header[0] << 8) | (_header[1]));
                 int old_size = _fc_old * 0x86;
@@ -153,8 +154,11 @@ namespace anim2link
                         Console.WriteLine("Done! " + fileOutPath + " Injected");
                     }
 
-                    _anime = Proc.GetByteArray(_rom, link_animetion, Anime_Size);
-                    File.WriteAllBytes(Directory.GetParent(textBoxRomPath.Text) + "/link_animetion.zdata", _anime);
+                    if (checkBoxExtractLinkAnime.Checked)
+                    {
+                        _anime = Proc.GetByteArray(_rom, link_animetion, Anime_Size);
+                        File.WriteAllBytes(Directory.GetParent(textBoxRomPath.Text) + "/link_animetion.zdata", _anime);
+                    }
 
                     rombw.Close();
                     rombw.Dispose();
@@ -182,22 +186,22 @@ namespace anim2link
             {
                 if (!Do_Not_Alert)
                 {
-                    MessageBox.Show("Cannot export a file that's already a .bin!", listView1.SelectedItems[0].Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Cannot export a file that's already a .bin!", fileOutPath, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    Console.WriteLine(listView1.SelectedItems[0].Text + " is already a .bin!");
+                    Console.WriteLine(fileOutPath + " is already a .bin!");
                 }
             }
             #endregion
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonExport_Click(object sender, EventArgs e)
         {
             processStuff();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonOpenSelectRomDialogue_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog OpenFile = new OpenFileDialog())
             {
@@ -208,22 +212,11 @@ namespace anim2link
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (checkBoxFloorPlaneComp.Checked)
-                FloorPlane = true;
-            else
-                FloorPlane = false;
-
-            Proc.host.FloorPlane = FloorPlane;
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            timer1.Start();
-            listBox1.SelectedIndex = 0;
+            listBoxRomVersionSelector.SelectedIndex = 0;
             Console.WriteLine(Anime_Size);
-            btnRefresh.Enabled = false;
+            buttonRefreshAnimList.Enabled = false;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -231,21 +224,21 @@ namespace anim2link
             if (listView1.SelectedItems.Count == 0) return;
             if (listView1.SelectedItems[0].SubItems[0].Text.StartsWith("0x"))
             {
-                textBox3.Text = listView1.SelectedItems[0].SubItems[0].Text.Split('_')[0];
+                textBoxAnimTableEntryGameplayKeepOffset.Text = listView1.SelectedItems[0].SubItems[0].Text.Split('_')[0];
             }
         }
 
         private void setLinkAnime(string text)
         {
-            textBox4.Text = text;
+            textBoxLinkAnimetionRomOffset.Text = text;
         }
 
         private void setGK(string text)
         {
-            textBox5.Text = text;
+            textBoxGamePlayKeepRomOffset.Text = text;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxRomVersionSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
             // a
             string debug_f1 = "0x004E5C00";
@@ -259,18 +252,18 @@ namespace anim2link
             string mm_f2 = "0x0108B000";
             int mm_f1_size = 0x000925E0;
 
-            if ((listBox1.SelectedItem as string) == "1.0 (Oot)")
+            if ((listBoxRomVersionSelector.SelectedItem as string) == "1.0 (Oot)")
             {
                 setLinkAnime(n0_f1);
                 setGK(n0_f2);
                 Anime_Size = n0_f1_size;
-            }else if ((listBox1.SelectedItem as string) == "Debug (Oot)")
+            }else if ((listBoxRomVersionSelector.SelectedItem as string) == "Debug (Oot)")
             {
                 setLinkAnime(debug_f1);
                 setGK(debug_f2);
                 Anime_Size = n0_f1_size;
             }
-            else if ((listBox1.SelectedItem as string) == "1.0 (MM)")
+            else if ((listBoxRomVersionSelector.SelectedItem as string) == "1.0 (MM)")
             {
                 setLinkAnime(mm_f1);
                 setGK(mm_f2);
@@ -279,7 +272,7 @@ namespace anim2link
 
         }
 
-        private void btnExportAll_Click(object sender, EventArgs e)
+        private void buttonExportAll_Click(object sender, EventArgs e)
         {
             Do_Not_Alert = true;
             for (int i = 0; i < listView1.SelectedIndices.Count; i++)
@@ -296,12 +289,12 @@ namespace anim2link
             MessageBox.Show("Done!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void buttonRefreshAnimList_Click(object sender, EventArgs e)
         {
             ListAnimations(listView1);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonOpenSelectBinDialogue_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog
             {
@@ -310,9 +303,14 @@ namespace anim2link
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxBinFiles.Text = string.Join(",", dialog.FileNames);
+                textBoxBinPath.Text = string.Join(",", dialog.FileNames);
                 ListAnimations(listView1);
             }
+        }
+
+        private void checkBoxFloorPlaneComp_CheckedChanged(object sender, EventArgs e)
+        {
+            Proc.host.FloorPlane = checkBoxFloorPlaneComp.Checked;
         }
     }
 }

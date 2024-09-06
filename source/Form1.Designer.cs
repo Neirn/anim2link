@@ -28,36 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxBinFiles = new System.Windows.Forms.TextBox();
-            this.buttonSelectBinFiles = new System.Windows.Forms.Button();
-            this.labelBinFiles = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxBinPath = new System.Windows.Forms.TextBox();
+            this.buttonOpenSelectBinDialogue = new System.Windows.Forms.Button();
+            this.labelBinPath = new System.Windows.Forms.Label();
+            this.buttonOpenSelectAnimDialogue = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxAnimPath = new System.Windows.Forms.TextBox();
+            this.labelAnimPath = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnExportAll = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.checkBoxFloorPlaneComp = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.checkBoxExtractLinkAnime = new System.Windows.Forms.CheckBox();
+            this.buttonExportAll = new System.Windows.Forms.Button();
+            this.listBoxRomVersionSelector = new System.Windows.Forms.ListBox();
+            this.buttonExport = new System.Windows.Forms.Button();
             this.checkBoxInjectToRom = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.labelGameplayKeepRomOffset = new System.Windows.Forms.Label();
+            this.textBoxGamePlayKeepRomOffset = new System.Windows.Forms.TextBox();
+            this.labelLinkAnimetionRomOffset = new System.Windows.Forms.Label();
+            this.textBoxLinkAnimetionRomOffset = new System.Windows.Forms.TextBox();
+            this.labelAnimTableEntryGameplayKeepOffset = new System.Windows.Forms.Label();
+            this.textBoxAnimTableEntryGameplayKeepOffset = new System.Windows.Forms.TextBox();
             this.buttonOpenSelectRomDialogue = new System.Windows.Forms.Button();
             this.textBoxRomPath = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.checkBoxExtractLinkAnime = new System.Windows.Forms.CheckBox();
+            this.checkBoxFloorPlaneComp = new System.Windows.Forms.CheckBox();
+            this.buttonRefreshAnimList = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,13 +63,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxBinFiles);
-            this.groupBox1.Controls.Add(this.buttonSelectBinFiles);
-            this.groupBox1.Controls.Add(this.labelBinFiles);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBoxBinPath);
+            this.groupBox1.Controls.Add(this.buttonOpenSelectBinDialogue);
+            this.groupBox1.Controls.Add(this.labelBinPath);
+            this.groupBox1.Controls.Add(this.buttonOpenSelectAnimDialogue);
             this.groupBox1.Controls.Add(this.listView1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBoxAnimPath);
+            this.groupBox1.Controls.Add(this.labelAnimPath);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(273, 250);
@@ -79,41 +77,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Source";
             // 
-            // textBoxBinFiles
+            // textBoxBinPath
             // 
-            this.textBoxBinFiles.Location = new System.Drawing.Point(102, 39);
-            this.textBoxBinFiles.Name = "textBoxBinFiles";
-            this.textBoxBinFiles.Size = new System.Drawing.Size(122, 20);
-            this.textBoxBinFiles.TabIndex = 7;
+            this.textBoxBinPath.Location = new System.Drawing.Point(102, 39);
+            this.textBoxBinPath.Name = "textBoxBinPath";
+            this.textBoxBinPath.Size = new System.Drawing.Size(122, 20);
+            this.textBoxBinPath.TabIndex = 7;
             // 
-            // buttonSelectBinFiles
+            // buttonOpenSelectBinDialogue
             // 
-            this.buttonSelectBinFiles.Location = new System.Drawing.Point(230, 37);
-            this.buttonSelectBinFiles.Name = "buttonSelectBinFiles";
-            this.buttonSelectBinFiles.Size = new System.Drawing.Size(35, 23);
-            this.buttonSelectBinFiles.TabIndex = 6;
-            this.buttonSelectBinFiles.Text = "...";
-            this.buttonSelectBinFiles.UseVisualStyleBackColor = true;
-            this.buttonSelectBinFiles.Click += new System.EventHandler(this.button4_Click);
+            this.buttonOpenSelectBinDialogue.Location = new System.Drawing.Point(230, 37);
+            this.buttonOpenSelectBinDialogue.Name = "buttonOpenSelectBinDialogue";
+            this.buttonOpenSelectBinDialogue.Size = new System.Drawing.Size(35, 23);
+            this.buttonOpenSelectBinDialogue.TabIndex = 6;
+            this.buttonOpenSelectBinDialogue.Text = "...";
+            this.buttonOpenSelectBinDialogue.UseVisualStyleBackColor = true;
+            this.buttonOpenSelectBinDialogue.Click += new System.EventHandler(this.buttonOpenSelectBinDialogue_Click);
             // 
-            // labelBinFiles
+            // labelBinPath
             // 
-            this.labelBinFiles.AutoSize = true;
-            this.labelBinFiles.Location = new System.Drawing.Point(6, 42);
-            this.labelBinFiles.Name = "labelBinFiles";
-            this.labelBinFiles.Size = new System.Drawing.Size(95, 13);
-            this.labelBinFiles.TabIndex = 4;
-            this.labelBinFiles.Text = "Binary (.bin) File(s):";
+            this.labelBinPath.AutoSize = true;
+            this.labelBinPath.Location = new System.Drawing.Point(6, 42);
+            this.labelBinPath.Name = "labelBinPath";
+            this.labelBinPath.Size = new System.Drawing.Size(95, 13);
+            this.labelBinPath.TabIndex = 4;
+            this.labelBinPath.Text = "Binary (.bin) File(s):";
             // 
-            // button1
+            // buttonOpenSelectAnimDialogue
             // 
-            this.button1.Location = new System.Drawing.Point(230, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonOpenSelectAnimDialogue.Location = new System.Drawing.Point(230, 11);
+            this.buttonOpenSelectAnimDialogue.Name = "buttonOpenSelectAnimDialogue";
+            this.buttonOpenSelectAnimDialogue.Size = new System.Drawing.Size(35, 23);
+            this.buttonOpenSelectAnimDialogue.TabIndex = 3;
+            this.buttonOpenSelectAnimDialogue.Text = "...";
+            this.buttonOpenSelectAnimDialogue.UseVisualStyleBackColor = true;
+            this.buttonOpenSelectAnimDialogue.Click += new System.EventHandler(this.openSelectAnimDialogue_Click);
             // 
             // listView1
             // 
@@ -142,28 +140,28 @@
             this.columnHeader2.Text = "Frame Count";
             this.columnHeader2.Width = 123;
             // 
-            // textBox1
+            // textBoxAnimPath
             // 
-            this.textBox1.Location = new System.Drawing.Point(102, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(122, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBoxAnimPath.Location = new System.Drawing.Point(102, 13);
+            this.textBoxAnimPath.Name = "textBoxAnimPath";
+            this.textBoxAnimPath.Size = new System.Drawing.Size(122, 20);
+            this.textBoxAnimPath.TabIndex = 2;
             // 
-            // label1
+            // labelAnimPath
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Animation (.anim):";
+            this.labelAnimPath.AutoSize = true;
+            this.labelAnimPath.Location = new System.Drawing.Point(6, 16);
+            this.labelAnimPath.Name = "labelAnimPath";
+            this.labelAnimPath.Size = new System.Drawing.Size(90, 13);
+            this.labelAnimPath.TabIndex = 1;
+            this.labelAnimPath.Text = "Animation (.anim):";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.checkBoxExtractLinkAnime);
-            this.groupBox2.Controls.Add(this.btnExportAll);
-            this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.buttonExportAll);
+            this.groupBox2.Controls.Add(this.listBoxRomVersionSelector);
+            this.groupBox2.Controls.Add(this.buttonExport);
             this.groupBox2.Controls.Add(this.checkBoxInjectToRom);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(291, 12);
@@ -173,48 +171,49 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Export";
             // 
-            // btnExportAll
+            // checkBoxExtractLinkAnime
             // 
-            this.btnExportAll.Location = new System.Drawing.Point(43, 256);
-            this.btnExportAll.Name = "btnExportAll";
-            this.btnExportAll.Size = new System.Drawing.Size(75, 23);
-            this.btnExportAll.TabIndex = 5;
-            this.btnExportAll.Text = "Export All";
-            this.btnExportAll.UseVisualStyleBackColor = true;
-            this.btnExportAll.Click += new System.EventHandler(this.btnExportAll_Click);
+            this.checkBoxExtractLinkAnime.AutoSize = true;
+            this.checkBoxExtractLinkAnime.Enabled = false;
+            this.checkBoxExtractLinkAnime.Location = new System.Drawing.Point(6, 42);
+            this.checkBoxExtractLinkAnime.Name = "checkBoxExtractLinkAnime";
+            this.checkBoxExtractLinkAnime.Size = new System.Drawing.Size(158, 17);
+            this.checkBoxExtractLinkAnime.TabIndex = 6;
+            this.checkBoxExtractLinkAnime.Text = "Extract link_animetion.zdata";
+            this.checkBoxExtractLinkAnime.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // buttonExportAll
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
+            this.buttonExportAll.Location = new System.Drawing.Point(43, 256);
+            this.buttonExportAll.Name = "buttonExportAll";
+            this.buttonExportAll.Size = new System.Drawing.Size(75, 23);
+            this.buttonExportAll.TabIndex = 5;
+            this.buttonExportAll.Text = "Export All";
+            this.buttonExportAll.UseVisualStyleBackColor = true;
+            this.buttonExportAll.Click += new System.EventHandler(this.buttonExportAll_Click);
+            // 
+            // listBoxRomVersionSelector
+            // 
+            this.listBoxRomVersionSelector.FormattingEnabled = true;
+            this.listBoxRomVersionSelector.Items.AddRange(new object[] {
             "1.0 (Oot)",
             "Debug (Oot)",
             "1.0 (MM)"});
-            this.listBox1.Location = new System.Drawing.Point(6, 207);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 43);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxRomVersionSelector.Location = new System.Drawing.Point(6, 207);
+            this.listBoxRomVersionSelector.Name = "listBoxRomVersionSelector";
+            this.listBoxRomVersionSelector.Size = new System.Drawing.Size(120, 43);
+            this.listBoxRomVersionSelector.TabIndex = 4;
+            this.listBoxRomVersionSelector.SelectedIndexChanged += new System.EventHandler(this.listBoxRomVersionSelector_SelectedIndexChanged);
             // 
-            // checkBoxFloorPlaneComp
+            // buttonExport
             // 
-            this.checkBoxFloorPlaneComp.AutoSize = true;
-            this.checkBoxFloorPlaneComp.Location = new System.Drawing.Point(136, 272);
-            this.checkBoxFloorPlaneComp.Name = "checkBoxFloorPlaneComp";
-            this.checkBoxFloorPlaneComp.Size = new System.Drawing.Size(149, 17);
-            this.checkBoxFloorPlaneComp.TabIndex = 3;
-            this.checkBoxFloorPlaneComp.Text = "Floor Plane Compensation";
-            this.checkBoxFloorPlaneComp.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(124, 256);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Export";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonExport.Location = new System.Drawing.Point(124, 256);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(75, 23);
+            this.buttonExport.TabIndex = 2;
+            this.buttonExport.Text = "Export";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
             // 
             // checkBoxInjectToRom
             // 
@@ -225,16 +224,16 @@
             this.checkBoxInjectToRom.TabIndex = 1;
             this.checkBoxInjectToRom.Text = "Inject File to ROM";
             this.checkBoxInjectToRom.UseVisualStyleBackColor = true;
-            this.checkBoxInjectToRom.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxInjectToRom.CheckedChanged += new System.EventHandler(this.checkBoxInjectToRom_CheckedChanged);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.labelGameplayKeepRomOffset);
+            this.groupBox3.Controls.Add(this.textBoxGamePlayKeepRomOffset);
+            this.groupBox3.Controls.Add(this.labelLinkAnimetionRomOffset);
+            this.groupBox3.Controls.Add(this.textBoxLinkAnimetionRomOffset);
+            this.groupBox3.Controls.Add(this.labelAnimTableEntryGameplayKeepOffset);
+            this.groupBox3.Controls.Add(this.textBoxAnimTableEntryGameplayKeepOffset);
             this.groupBox3.Controls.Add(this.buttonOpenSelectRomDialogue);
             this.groupBox3.Controls.Add(this.textBoxRomPath);
             this.groupBox3.Enabled = false;
@@ -245,56 +244,56 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ROM";
             // 
-            // label4
+            // labelGameplayKeepRomOffset
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "gameplay_keep:";
+            this.labelGameplayKeepRomOffset.AutoSize = true;
+            this.labelGameplayKeepRomOffset.Location = new System.Drawing.Point(6, 74);
+            this.labelGameplayKeepRomOffset.Name = "labelGameplayKeepRomOffset";
+            this.labelGameplayKeepRomOffset.Size = new System.Drawing.Size(85, 13);
+            this.labelGameplayKeepRomOffset.TabIndex = 11;
+            this.labelGameplayKeepRomOffset.Text = "gameplay_keep:";
             // 
-            // textBox5
+            // textBoxGamePlayKeepRomOffset
             // 
-            this.textBox5.Location = new System.Drawing.Point(94, 72);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(93, 20);
-            this.textBox5.TabIndex = 10;
-            this.textBox5.Text = "0x00F5E000";
+            this.textBoxGamePlayKeepRomOffset.Location = new System.Drawing.Point(94, 72);
+            this.textBoxGamePlayKeepRomOffset.Name = "textBoxGamePlayKeepRomOffset";
+            this.textBoxGamePlayKeepRomOffset.Size = new System.Drawing.Size(93, 20);
+            this.textBoxGamePlayKeepRomOffset.TabIndex = 10;
+            this.textBoxGamePlayKeepRomOffset.Text = "0x00F5E000";
             // 
-            // label3
+            // labelLinkAnimetionRomOffset
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "link_animetion:";
+            this.labelLinkAnimetionRomOffset.AutoSize = true;
+            this.labelLinkAnimetionRomOffset.Location = new System.Drawing.Point(6, 48);
+            this.labelLinkAnimetionRomOffset.Name = "labelLinkAnimetionRomOffset";
+            this.labelLinkAnimetionRomOffset.Size = new System.Drawing.Size(77, 13);
+            this.labelLinkAnimetionRomOffset.TabIndex = 9;
+            this.labelLinkAnimetionRomOffset.Text = "link_animetion:";
             // 
-            // textBox4
+            // textBoxLinkAnimetionRomOffset
             // 
-            this.textBox4.Location = new System.Drawing.Point(94, 46);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(93, 20);
-            this.textBox4.TabIndex = 8;
-            this.textBox4.Text = "0x004E5C00";
+            this.textBoxLinkAnimetionRomOffset.Location = new System.Drawing.Point(94, 46);
+            this.textBoxLinkAnimetionRomOffset.Name = "textBoxLinkAnimetionRomOffset";
+            this.textBoxLinkAnimetionRomOffset.Size = new System.Drawing.Size(93, 20);
+            this.textBoxLinkAnimetionRomOffset.TabIndex = 8;
+            this.textBoxLinkAnimetionRomOffset.Text = "0x004E5C00";
             // 
-            // label2
+            // labelAnimTableEntryGameplayKeepOffset
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 100);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Animation:";
+            this.labelAnimTableEntryGameplayKeepOffset.AutoSize = true;
+            this.labelAnimTableEntryGameplayKeepOffset.Location = new System.Drawing.Point(6, 100);
+            this.labelAnimTableEntryGameplayKeepOffset.Name = "labelAnimTableEntryGameplayKeepOffset";
+            this.labelAnimTableEntryGameplayKeepOffset.Size = new System.Drawing.Size(56, 13);
+            this.labelAnimTableEntryGameplayKeepOffset.TabIndex = 7;
+            this.labelAnimTableEntryGameplayKeepOffset.Text = "Animation:";
             // 
-            // textBox3
+            // textBoxAnimTableEntryGameplayKeepOffset
             // 
-            this.textBox3.Location = new System.Drawing.Point(94, 98);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(93, 20);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.Text = "0x2310";
+            this.textBoxAnimTableEntryGameplayKeepOffset.Location = new System.Drawing.Point(94, 98);
+            this.textBoxAnimTableEntryGameplayKeepOffset.Name = "textBoxAnimTableEntryGameplayKeepOffset";
+            this.textBoxAnimTableEntryGameplayKeepOffset.Size = new System.Drawing.Size(93, 20);
+            this.textBoxAnimTableEntryGameplayKeepOffset.TabIndex = 6;
+            this.textBoxAnimTableEntryGameplayKeepOffset.Text = "0x2310";
             // 
             // buttonOpenSelectRomDialogue
             // 
@@ -304,7 +303,7 @@
             this.buttonOpenSelectRomDialogue.TabIndex = 5;
             this.buttonOpenSelectRomDialogue.Text = "...";
             this.buttonOpenSelectRomDialogue.UseVisualStyleBackColor = true;
-            this.buttonOpenSelectRomDialogue.Click += new System.EventHandler(this.button3_Click);
+            this.buttonOpenSelectRomDialogue.Click += new System.EventHandler(this.buttonOpenSelectRomDialogue_Click);
             // 
             // textBoxRomPath
             // 
@@ -313,36 +312,33 @@
             this.textBoxRomPath.Size = new System.Drawing.Size(140, 20);
             this.textBoxRomPath.TabIndex = 4;
             // 
-            // timer1
+            // checkBoxFloorPlaneComp
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.checkBoxFloorPlaneComp.AutoSize = true;
+            this.checkBoxFloorPlaneComp.Location = new System.Drawing.Point(136, 272);
+            this.checkBoxFloorPlaneComp.Name = "checkBoxFloorPlaneComp";
+            this.checkBoxFloorPlaneComp.Size = new System.Drawing.Size(149, 17);
+            this.checkBoxFloorPlaneComp.TabIndex = 3;
+            this.checkBoxFloorPlaneComp.Text = "Floor Plane Compensation";
+            this.checkBoxFloorPlaneComp.UseVisualStyleBackColor = true;
+            this.checkBoxFloorPlaneComp.CheckedChanged += new System.EventHandler(this.checkBoxFloorPlaneComp_CheckedChanged);
             // 
-            // btnRefresh
+            // buttonRefreshAnimList
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(12, 268);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(123, 23);
-            this.btnRefresh.TabIndex = 2;
-            this.btnRefresh.Text = "Refresh Animation List";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // checkBoxExtractLinkAnime
-            // 
-            this.checkBoxExtractLinkAnime.AutoSize = true;
-            this.checkBoxExtractLinkAnime.Location = new System.Drawing.Point(6, 42);
-            this.checkBoxExtractLinkAnime.Name = "checkBoxExtractLinkAnime";
-            this.checkBoxExtractLinkAnime.Size = new System.Drawing.Size(155, 17);
-            this.checkBoxExtractLinkAnime.TabIndex = 6;
-            this.checkBoxExtractLinkAnime.Text = "Export link_animetion.zdata";
-            this.checkBoxExtractLinkAnime.UseVisualStyleBackColor = true;
+            this.buttonRefreshAnimList.Location = new System.Drawing.Point(12, 268);
+            this.buttonRefreshAnimList.Name = "buttonRefreshAnimList";
+            this.buttonRefreshAnimList.Size = new System.Drawing.Size(123, 23);
+            this.buttonRefreshAnimList.TabIndex = 2;
+            this.buttonRefreshAnimList.Text = "Refresh Animation List";
+            this.buttonRefreshAnimList.UseVisualStyleBackColor = true;
+            this.buttonRefreshAnimList.Click += new System.EventHandler(this.buttonRefreshAnimList_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 302);
-            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.buttonRefreshAnimList);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.checkBoxFloorPlaneComp);
             this.Controls.Add(this.groupBox1);
@@ -364,32 +360,31 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonOpenSelectAnimDialogue;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxAnimPath;
+        private System.Windows.Forms.Label labelAnimPath;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox checkBoxInjectToRom;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonExport;
         private System.Windows.Forms.Button buttonOpenSelectRomDialogue;
         private System.Windows.Forms.TextBox textBoxRomPath;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label labelAnimTableEntryGameplayKeepOffset;
+        private System.Windows.Forms.TextBox textBoxAnimTableEntryGameplayKeepOffset;
+        private System.Windows.Forms.Label labelGameplayKeepRomOffset;
+        private System.Windows.Forms.TextBox textBoxGamePlayKeepRomOffset;
+        private System.Windows.Forms.Label labelLinkAnimetionRomOffset;
+        private System.Windows.Forms.TextBox textBoxLinkAnimetionRomOffset;
         private System.Windows.Forms.CheckBox checkBoxFloorPlaneComp;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button btnExportAll;
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Button buttonSelectBinFiles;
-        private System.Windows.Forms.Label labelBinFiles;
-        private System.Windows.Forms.TextBox textBoxBinFiles;
+        private System.Windows.Forms.ListBox listBoxRomVersionSelector;
+        private System.Windows.Forms.Button buttonExportAll;
+        private System.Windows.Forms.Button buttonRefreshAnimList;
+        private System.Windows.Forms.Button buttonOpenSelectBinDialogue;
+        private System.Windows.Forms.Label labelBinPath;
+        private System.Windows.Forms.TextBox textBoxBinPath;
         private System.Windows.Forms.CheckBox checkBoxExtractLinkAnime;
     }
 }

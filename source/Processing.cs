@@ -61,8 +61,8 @@ namespace anim2link
                 }
                 else
                 {
-                    byte[] _b = File.ReadAllBytes(SourceFile);
-                    FrameCount = _b.Length / Animation.RAW_FRAME_SIZE;
+                    FileInfo fileInfo = new FileInfo(SourceFile);
+                    FrameCount = Convert.ToInt32(fileInfo.Length) / Animation.RAW_FRAME_SIZE;
                 }
                 
             }
