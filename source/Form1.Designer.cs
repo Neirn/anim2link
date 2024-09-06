@@ -45,7 +45,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.checkBoxFloorPlaneComp = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxInjectToRom = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -162,7 +162,7 @@
             this.groupBox2.Controls.Add(this.btnExportAll);
             this.groupBox2.Controls.Add(this.listBox1);
             this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.checkBoxInjectToRom);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(291, 12);
             this.groupBox2.Name = "groupBox2";
@@ -214,16 +214,16 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // checkBox1
+            // checkBoxInjectToRom
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(111, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Inject File to ROM";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxInjectToRom.AutoSize = true;
+            this.checkBoxInjectToRom.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxInjectToRom.Name = "checkBoxInjectToRom";
+            this.checkBoxInjectToRom.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxInjectToRom.TabIndex = 1;
+            this.checkBoxInjectToRom.Text = "Inject File to ROM";
+            this.checkBoxInjectToRom.UseVisualStyleBackColor = true;
+            this.checkBoxInjectToRom.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -359,7 +359,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxInjectToRom;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonOpenSelectRomDialogue;

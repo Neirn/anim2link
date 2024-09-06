@@ -106,7 +106,7 @@ namespace anim2link
             byte[] AnimationRaw = Proc.GetRaw(anim);
             string fileOutPath = String.Format("{0}.bin", listView1.SelectedItems[0].Text);
             #region Write To ROM
-            if (checkBox1.Checked)
+            if (checkBoxInjectToRom.Checked)
             {
                 // Initialize Variables
                 byte[] _rom = File.ReadAllBytes(textBoxRomPath.Text);
