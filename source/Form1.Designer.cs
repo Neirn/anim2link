@@ -188,7 +188,7 @@
             "1.0 (Oot)",
             "Debug (Oot)",
             "1.0 (MM)"});
-            this.listBox1.Location = new System.Drawing.Point(15, 178);
+            this.listBox1.Location = new System.Drawing.Point(6, 207);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 43);
             this.listBox1.TabIndex = 4;
@@ -236,7 +236,7 @@
             this.groupBox3.Controls.Add(this.buttonOpenSelectRomDialogue);
             this.groupBox3.Controls.Add(this.textBoxRomPath);
             this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(6, 42);
+            this.groupBox3.Location = new System.Drawing.Point(6, 71);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(193, 130);
             this.groupBox3.TabIndex = 0;
