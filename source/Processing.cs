@@ -41,6 +41,15 @@ namespace anim2link
                             }
                         }
                     }
+                    else if (_s[0] == "newanim")
+                    {
+                        if (_s[2] == Name)
+                        {
+                            SourceLine = i;
+                            FrameCount = int.Parse(_s[3]);
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -166,14 +175,14 @@ namespace anim2link
                     string[] _s = _line[j].Split(' ');
 
                     // If Translation
-                    if (_s[0] == "l")
+                    if (_s[0] == "l" || _s[0] == "loc")
                     {
                         byte[] _l = TranslationFromString(_s);
                         OverwriteByteArray(_frame, _writepos, _l);
                     }
 
                     // If Rotation
-                    if (_s[0] == "r")
+                    if (_s[0] == "r" || _s[0] == "rot")
                     {
                         byte[] _r = RotationFromString(_s);
                         OverwriteByteArray(_frame, _writepos, _r);
