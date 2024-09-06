@@ -210,7 +210,7 @@ namespace anim2link
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (checkBox2.Checked)
+            if (checkBoxFloorPlaneComp.Checked)
                 FloorPlane = true;
             else
                 FloorPlane = false;

@@ -43,7 +43,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnExportAll = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxFloorPlaneComp = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -161,7 +161,7 @@
             // 
             this.groupBox2.Controls.Add(this.btnExportAll);
             this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.checkBoxFloorPlaneComp);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.groupBox3);
@@ -195,15 +195,15 @@
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // checkBox2
+            // checkBoxFloorPlaneComp
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 233);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(149, 17);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "Floor Plane Compensation";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxFloorPlaneComp.AutoSize = true;
+            this.checkBoxFloorPlaneComp.Location = new System.Drawing.Point(6, 233);
+            this.checkBoxFloorPlaneComp.Name = "checkBoxFloorPlaneComp";
+            this.checkBoxFloorPlaneComp.Size = new System.Drawing.Size(149, 17);
+            this.checkBoxFloorPlaneComp.TabIndex = 3;
+            this.checkBoxFloorPlaneComp.Text = "Floor Plane Compensation";
+            this.checkBoxFloorPlaneComp.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -369,7 +369,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBoxFloorPlaneComp;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnExportAll;
